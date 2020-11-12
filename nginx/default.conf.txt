@@ -1,0 +1,23 @@
+we are actually building image of client , server , worker in the same place, WORKDIR /app
+so all the files will be accessed like /index.html /app.js
+
+and when we send some request from client to backend 
+specifically for this project, we do it as /api/route-name like /api/tasks
+but when all the images are in same place of docker 
+they will be called only with their route-name like /tasks (as app.get("/tasks" , (req , res) => {}))
+it depends on us if we mix /api in the route-name itself and route-name itself will be like /api/tasks 
+
+
+in this default.conf 
+we have a react on 3000
+and backend on 5000 
+
+we make them in a single port 80 
+then every route that comes with "/" only -- will go to client folder -- like /index.html 
+
+then we have # Socket connections for react app
+
+and every route that comes with "/api" will go to backend 
+          and as we can only access routes with only route-names and without /api
+          so we will cut /api from the route and then will send to backend then .
+          ^/api/(.*) so /$1=(.*)
