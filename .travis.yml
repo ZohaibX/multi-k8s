@@ -36,6 +36,7 @@ after_success:
 
   #!!!!! must push the code to github before writing deploy script so every image will be pushed to docker hub.
 
+  # i have to create these services for this app to work-- i can see in AWS cheat sheet
 #! Deploy
 deploy:
   edge: true
