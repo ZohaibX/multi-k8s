@@ -15,7 +15,8 @@ class App extends Component {
             <img src={logo} className="App-logo" alt="logo" />
             <h1 className="App-title">Welcome to React</h1>
             <Link to="/">Home</Link>
-            <Link to="/otherpage">Other Page</Link>
+            <span> </span>
+            <a href="https://www.google.com">Other Page</a>
           </header>
           <div>
             <Route exact path="/" component={Fib} />

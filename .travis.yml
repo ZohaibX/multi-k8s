@@ -35,3 +35,17 @@ after_success:
   - docker push 03004968719/multi-server
 
   #!!!!! must push the code to github before writing deploy script so every image will be pushed to docker hub.
+
+#! Deploy
+deploy:
+  edge: true
+  provider: elasticbeanstalk
+  region: us-east-1
+  app: docker-course
+  env: DockerCourse-env
+  bucket_name: elasticbeanstalk-us-east-1-739511424947
+  bucket_path: docker-course # choose any name
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_id: $AWS_SECRET_KEY
