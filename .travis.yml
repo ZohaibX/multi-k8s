@@ -46,6 +46,6 @@ deploy:
   bucket_name: elasticbeanstalk-us-east-1-739511424947
   bucket_path: docker-course # choose any name
   on:
-    branch: main
+    branch: main # master or main
   access_key_id: $AWS_ACCESS_KEY
   secret_access_id: $AWS_SECRET_KEY

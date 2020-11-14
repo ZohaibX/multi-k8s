@@ -7,13 +7,12 @@ import Fib from "./Fib";
 
 class App extends Component {
   render() {
-    console.log("New-1");
     return (
       <Router>
         <div className="App">
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Welcome to React</h1>
+            <h1 className="App-title">Fib Calculator</h1>
             <Link to="/">Home</Link>
             <span> </span>
             <a href="https://www.google.com">Other Page</a>
