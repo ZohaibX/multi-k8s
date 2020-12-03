@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: postgres
+  template:
+    metadata:
+      labels:
+        component: postgres
+    spec:
+      volumes: # referencing to the persistent volume claim
+        - name: postgres-storage
+          persistentVolumeClaim:
+            claimName: database-persistent-volume-claim # name of exact persistent volume config file
+      containers:
+        - name: postgres
+          image: postgres
+          ports:
+            - containerPort: 5432
+          volumeMounts: # referencing to the persistent volume claim
+            - name: postgres-storage # must be same as above
+              mountPath: /var/lib/postgresql/data
+              subPath: postgres # a subfolder in which data will stay -- specifically for postgres database
+          env: # overwriting the default password of postgres image
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pgpassword
+                  key: PGPASSWORD
+# whenever database pod crashes, that pod will be deleted by k8s and a new fresh pod will be created
+# but all the data of previous crashed pod will be completely lost
+# so we will use volumes - so newly created pod will have same data access

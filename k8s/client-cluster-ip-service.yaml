@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-cluster-ip-service
+spec:
+  type: ClusterIP # ClusterIP service will provide access to it's connected object with other objects inside the same cluster --
+  # like redis's cluster ip will provide access to backend , to connect with redis
+  # inside the same cluster
+  selector:
+    component: web # it will provide access to the objects with same selectors/labels
+  ports:
+    - port: 3000 # it could be same or something other
+      targetPort: 3000 # target object's port

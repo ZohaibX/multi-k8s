@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: worker
+  template:
+    metadata:
+      labels:
+        component: worker
+    spec:
+      containers:
+        - name: worker
+          image: 03004968719/multi-worker
+          env:
+            - name: REDIS_HOST
+              value: redis-cluster-ip-service # name of the service
+            - name: REDIS_PORT
+              value: '6379' #  all env vars should be in string form
+
+# no need for service ports in worker file

@@ -1,0 +1,25 @@
+Kubernetes should be enabled in Docker Desktop for Windows
+and when we right click on the docker icon, then kubernetes option should be according to docker and not to minikube 
+
+Every Service File will have one deployment file and one service ( cluster ip service) file 
+We will have a database persistent volume claim file and we will connect Relational database deployment file with persistent volume file
+for postgres - we will define env variable for password
+we will define all the env variables for redis, postgres and all other in backend file 
+We will define secret object  
+
+nginx-ingress
+official docs https://kubernetes.github.io/ingress-nginx/deploy/#provider-specific-steps
+docker for mac command is to run, which is as same as for windows 
+to see if service is enabled -- kubectl get svc -n ingress-nginx
+=> Then, we have different commands for every environment
+   - for google cloud, we have GCE-GKE command 
+   - and other commands for aws and azure 
+
+after we have running all the pods
+after running all the services, deployments , secrets
+and after seeing if nginx-ingress is working 
+then go to just localhost without any port 
+
+To Access kubernetes dashboard
+we have a file in the same directory
+- Every pod should be running without any problem 

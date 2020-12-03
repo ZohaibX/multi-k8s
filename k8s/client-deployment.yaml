@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment # set of objects
+metadata:
+  name: client-deployment
+spec:
+  replicas: 3s
+  selector:
+    matchLabels: # to match the labels, label could be anything -- it could be label:client
+      component: web
+  template:
+    metadata:
+      labels:
+        component: web # should be same as above
+    spec:
+      containers:
+        - name: client
+          image: stephengrider/multi-client
+          ports:
+            - containerPort: 3000

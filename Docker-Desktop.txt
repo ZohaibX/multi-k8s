@@ -1,0 +1,30 @@
+First of all go to https://github.com/kubernetes/dashboard 
+and copy kubectl command and run that on terminal in the same folder actually
+
+run this command on my k8s folder
+curl -O https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
+and it will create a kubernetes dashboard file in k8s
+and we have to make some changes in that file 
+
+Open up the downloaded file in your code editor and find line 116. Add the following two lines underneath --auto-generate-certificates:
+args:
+  - --auto-generate-certificates
+  - --enable-skip-login
+  - --disable-settings-authorizer
+
+Run the following command inside the directory where you downloaded the dashboard yaml file a few steps ago:
+kubectl apply -f kubernetes-dashboard.yaml
+
+Start the server by running the following command:
+kubectl proxy
+
+You can now access the dashboard by visiting:
+http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
+
+You will be presented with a login screen
+you can skip that login and you'll be directed to dashboard
+and you can also provide token by creating one after finding on google how to create
+
+file is also in 
+F:\Web\JavaScript Developement\Docker\[GigaCourse.com] Udemy - Docker and Kubernetes The Complete Guide\15. Handling Traffic with Ingress Controllers
+and in main files -- GitHub
