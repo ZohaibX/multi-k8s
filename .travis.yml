@@ -1,0 +1,24 @@
+sudo: required
+services:
+  - docker
+before_install:
+  - openssl aes-256-cbc -K $encrypted_9f3b5599b056_key -iv $encrypted_9f3b5599b056_iv -in service-account.json.enc -out service-account.json -d
+  # this command coming from #!(5)
+  - curl https://sdk.cloud.google.com | bash > /dev/null; # command to download google sdk
+  - source $HOME/google-cloud-sdk/path.bash.inc # configuration for google sdk
+  - gcloud components update kubectl # install and update kubectl inside travis environment
+  - gcloud auth activate-service-account --key-file service-account.json # this command is like IAM user as AWS -- we will put user data into service-account.json file
+  # create service account on the IAM tab on google cloud platform
+  # after creating a service account -- i will have to create a key and select json -- and a json file will be downloaded
+  # to encrypt all that json data --  we need travis cli and to download travis cli -- we need ruby image installed
+  #! steps to download ruby and travis
+  # go to this project in powershell
+  # docker run -it -v ${pwd}:/app ruby:2.4 sh #? sh command to open the shell and for powershell admin only
+  # now in the shell -- do ls and find 'app' and then cd app to get inside of that folder . and after doing ls again. i should see this project
+  # gem install travis #? in the same opened shell
+  # travis login --github-token [token] #? in the same shell, and token will be generated from https://github.com/settings/tokens with good access
+  # copy the downloaded json file into the project folder and rename it
+  # then we will encrypt that file using command -- travis encrypt-file service-account.json -r zohaibbutt045/multi-k8s #? service-account.json is the file name to encrypt and at the end, we need to give repository name
+  #!(5) after that, we will get a command, which we have to paste on the start of before_install method
+  # now if i do ls in powershell. i will get one more enc file created
+  # must delete the original account file after the enc file created
