@@ -1,5 +1,6 @@
 sudo: required
-services:-  - docker
+services: 
+ - docker
 env:
   global:
     - SHA=$(git rev-parse HEAD) # this is command to get the ID of latest commit of this project -- this will always be different for different commits
