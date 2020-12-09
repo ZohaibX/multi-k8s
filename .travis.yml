@@ -6,7 +6,7 @@ env:
     - SHA=$(git rev-parse HEAD) # this is command to get the ID of latest commit of this project -- this will always be different for different commits
     - CLOUDSDK_CORE_DISABLE_PROMPTS=1 # special command is for gcloud commands below
 before_install:
-  - openssl aes-256-cbc -K $encrypted_9f3b5599b056_key -iv $encrypted_9f3b5599b056_iv -in service-account.json.enc -out service-account.json -d
+  - openssl aes-256-cbc -K $encrypted_d2bedf8223e1_key -iv $encrypted_d2bedf8223e1_iv -in super_secret.json.enc -out super_secret.json -d
   # this command coming from #!(5)
   - curl https://sdk.cloud.google.com | bash > /dev/null; # command to download google sdk
   - source $HOME/google-cloud-sdk/path.bash.inc # configuration for google sdk
