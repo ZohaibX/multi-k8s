@@ -3,7 +3,7 @@ kind: Deployment # set of objects
 metadata:
   name: client-deployment
 spec:
-  replicas: 3s
+  replicas: 3
   selector:
     matchLabels: # to match the labels, label could be anything -- it could be label:client
       component: web
