@@ -30,7 +30,7 @@ before_install:
   - gcloud config set project multi-k8s-297711 # get the id of project
   - gcloud config set compute/zone us-central1-c # we will get the zone like us-east when we create kubernetes cluster in our project
   - gcloud container clusters get-credentials cluster-1 # get the cluster name when we create one
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
   - docker build -t 03004968719/react-tests -f ./client/Dockerfile.dev ./client #? bcoz we wanna run tests for this image
   # 03004968719/react-tests is just naming of the build
 
