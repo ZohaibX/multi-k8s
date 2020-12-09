@@ -11,7 +11,7 @@ before_install:
   - curl https://sdk.cloud.google.com | bash > /dev/null; # command to download google sdk
   - source $HOME/google-cloud-sdk/path.bash.inc # configuration for google sdk
   - gcloud components update kubectl # install and update kubectl inside travis environment
-  - gcloud auth activate-service-account --key-file service-account.json # this command is like IAM user as AWS -- we will put user data into service-account.json file
+  - gcloud auth activate-service-account --key-file super_secret.json # this command is like IAM user as AWS -- we will put user data into service-account.json file
   # create service account on the IAM tab on google cloud platform
   # after creating a service account -- i will have to create a key and select json -- and a json file will be downloaded
   # to encrypt all that json data --  we need travis cli and to download travis cli -- we need ruby image installed
