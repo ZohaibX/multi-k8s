@@ -5,11 +5,11 @@ docker build -t 03004968719/multi-worker:latest -t 03004968719/multi-worker:$SHA
 
 docker push 03004968719/multi-client:latest
 docker push 03004968719/multi-server:latest
-docker push 03004968719/multi-worker :latest
+docker push 03004968719/multi-worker:latest
 
 docker push 03004968719/multi-client:$SHA
 docker push 03004968719/multi-server:$SHA
-docker push 03004968719/multi-worker :$SHA
+docker push 03004968719/multi-worker:$SHA
 
 
 kubectl apply -f k8s 
