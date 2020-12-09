@@ -6,7 +6,7 @@ env:
     - SHA=$(git rev-parse HEAD) # this is command to get the ID of latest commit of this project -- this will always be different for different commits
     - CLOUDSDK_CORE_DISABLE_PROMPTS=1 # special command is for gcloud commands below
 before_install:
-  - openssl aes-256-cbc -K $encrypted_3b9f0b9d36d1_key -iv $encrypted_3b9f0b9d36d1_iv -in secrets.tar.enc -out secrets.tar -d
+  - openssl aes-256-cbc -K $encrypted_d2bedf8223e1_key -iv $encrypted_d2bedf8223e1_iv -in super_secret.json.enc -out super_secret.json -d
   # this command coming from #!(5)
   - curl https://sdk.cloud.google.com | bash > /dev/null; # command to download google sdk
   - source $HOME/google-cloud-sdk/path.bash.inc # configuration for google sdk
@@ -22,7 +22,8 @@ before_install:
   # gem install travis #? in the same opened shell
   # travis login --github-token [token] #? in the same shell, and token will be generated from https://github.com/settings/tokens with good access
   # copy the downloaded json file into the project folder and rename it
-  # then we will encrypt that file using command -- travis encrypt-file service-account.json -r zohaibbutt045/multi-k8s #? service-account.json is the file name to encrypt and at the end, we need to give repository name
+  # then we will encrypt that file using command --
+  # travis encrypt-file --pro super_secret.json -r zohaibbutt045/multi-k8s #? service-account.json is the file name to encrypt and at the end, we need to give repository name
   #!(5) after that, we will get a command, which we have to paste on the start of before_install method
   # now if i do ls in powershell. i will get one more enc file created
   # must delete the original account file after the enc file created
