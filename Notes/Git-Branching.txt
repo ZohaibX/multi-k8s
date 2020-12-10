@@ -1,0 +1,10 @@
+in the same directory in terminal 
+(1)  git checkout -b devel
+branch will be switched to devel
+
+now we need to push the code ... like git push origin devel 
+
+now in the github repo 
+go to pull requests section 
+and  enter create pull request from compare devel to base master (base: master <- compare devel)
+and then write comments and crate pull request
