@@ -6,5 +6,13 @@ now we need to push the code ... like git push origin devel
 
 now in the github repo 
 go to pull requests section 
+click on the compare pull request 
 and  enter create pull request from compare devel to base master (base: master <- compare devel)
 and then write comments and crate pull request
+
+then travis tests will show up on the same screen
+and when all the test passes . then We will merge the request .
+and once, we merge the requests in to base:master or base:main 
+then i could delete devel branch or not delete
+
+after merging,  travis will run again 
