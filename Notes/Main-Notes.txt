@@ -9,10 +9,11 @@ We will define secret object
 
                      ---------- nginx-ingress ------------
 official docs https://kubernetes.github.io/ingress-nginx/deploy/#provider-specific-steps
-docker for mac command is to run, which is as same as for windows 
-to see if service is enabled -- kubectl get svc -n ingress-nginx
+(1) - docker for mac command is to run, which is as same as for windows 
+to see if service is enabled -- 
+(2) - kubectl get svc -n ingress-nginx
 => Then, we have different commands for every environment
-   - for!!!!!! google cloud, we have GCE-GKE command 
+   - (3) for!!!!!! google cloud, we have GCE-GKE command 
    - and other commands for aws and azure 
 
 after we have running all the pods

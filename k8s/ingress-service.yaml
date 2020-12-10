@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: extensions/v1beta1 # this apiVersion is expired but this is the only one working
 kind: Ingress
 metadata:
   name: ingress-service
