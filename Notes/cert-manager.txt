@@ -37,7 +37,11 @@ helm install \
 Then create certificate and issuer file in the k8s directory and after configuring 
 push the code and when travis do all of the work and again deploy into the gcloud 
 in the services and workloads section of the kubernetes cluster in google cloud
-i'll see cert related services 
+i'll see cert related services
+
+then in the gcloud console 
+i can see kubectl get certificates and then describe it to further analyze
 
 
 Then i will start configuring ingress-service file for https 
+and after configuring that file, i will have to push that again
