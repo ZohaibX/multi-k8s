@@ -1,0 +1,21 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: goldlacpaints-online-tls # acc to my domain name .. (online) could be org , com , io
+spec:
+  secretName: goldlacpaints-online
+  issuerRef: # reference to the issuer file
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: goldlacpaints.online
+  dnsNames:
+    - goldlacpaints.online
+    - www.goldlacpaints.online
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - goldlacpaints.online
+          - www.goldlacpaints.online
+#! This is the certificate file for cert manager

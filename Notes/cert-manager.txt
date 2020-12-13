@@ -1,0 +1,43 @@
+First Install cert manager in kubernetes cluster on google cloud 
+in the console
+
+official docs :-
+https://docs.cert-manager.io/en/latest/getting-started/install/kubernetes.html#steps
+
+1.  Apply the yaml config file
+kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.11/deploy/manifests/00-crds.yaml
+
+2. Create the namespace for cert-manager
+kubectl create namespace cert-manager
+
+3. Add the Jetstack Helm repository
+helm repo add jetstack https://charts.jetstack.io
+
+4. Update your local Helm chart repository cache
+helm repo update
+
+5.  Install the cert-manager Helm chart:
+
+Helm v2:
+
+helm install \
+  --name cert-manager \
+  --namespace cert-manager \
+  --version v0.11.0 \
+  jetstack/cert-manager
+
+Helm v3: -- use this 
+
+helm install \
+  cert-manager \
+  --namespace cert-manager \
+  --version v0.11.0 \
+  jetstack/cert-manager
+
+Then create certificate and issuer file in the k8s directory and after configuring 
+push the code and when travis do all of the work and again deploy into the gcloud 
+in the services and workloads section of the kubernetes cluster in google cloud
+i'll see cert related services 
+
+
+Then i will start configuring ingress-service file for https 

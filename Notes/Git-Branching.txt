@@ -27,4 +27,4 @@ git push origin main
 
 if some error occurs in pushing code .. i will have to pull the code first 
 git pull origin main 
-then git push
+then git add commit and push 
