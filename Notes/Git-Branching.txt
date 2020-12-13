@@ -16,3 +16,15 @@ and once, we merge the requests in to base:master or base:main
 then i could delete devel branch or not delete
 
 after merging,  travis will run again 
+
+
+-- Coming Back to Main Branch 
+
+1st git add .
+git commit -m "" 
+git checkout main
+git push origin main 
+
+if some error occurs in pushing code .. i will have to pull the code first 
+git pull origin main 
+then git push
