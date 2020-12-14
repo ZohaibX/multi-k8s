@@ -1,0 +1,42 @@
+# this file is for development use in the world of k8s
+# skaffold will detect changes from our directory, will that change to docker image and then will push -
+# that image on kubernetes cluster
+
+#? but this file is only for development version , when ingress service file is not tied up with prod stuff
+
+apiVersion: skaffold/v1beta2
+kind: Config
+build:
+  local:
+    push: false # we don't want to push our image (when there is no need to push) into docker hub, whenever our image is created
+  artifacts:
+    - image: 03004968719/multi-client
+      context: client # path to the folder
+      docker:
+        dockerfile: Dockerfile.dev # dockerfile.dev works on yarn start (react app) command which will keep running and detect changes
+      sync: # whenever a change is made on any file, our image will be updated with that change
+        '**/*.js': .
+        '**/*.css': .
+        '**/*.html': .
+    - image: 03004968719/multi-server
+      context: server # path to the folder
+      docker:
+        dockerfile: Dockerfile.dev # dockerfile.dev works on yarn dev (nodemon) command which will keep running and detect changes
+      sync: # whenever a change is made on any file, our image will be updated with that change
+        '**/*.js': .
+    - image: 03004968719/multi-worker
+      context: worker # path to the folder
+      docker:
+        dockerfile: Dockerfile.dev # dockerfile.dev works on yarn dev command which will keep running and detect changes
+      sync: # whenever a change is made on any file, our image will be updated with that change
+        '**/*.js': .
+deploy:
+  kubectl:
+    manifests:
+      - k8s/client-deployment.yaml
+      - k8s/server-deployment.yaml
+      - k8s/worker-deployment.yaml
+      - k8s/client-cluster-ip-service.yaml
+      - k8s/server-cluster-ip-service.yaml
+# these deployments and service will automatically be deleted when we stop skaffold dev in cmd
+# and they will start working when we say skaffold dev in cmd
