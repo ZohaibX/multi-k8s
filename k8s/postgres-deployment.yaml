@@ -26,6 +26,7 @@ spec:
               mountPath: /var/lib/postgresql/data
               subPath: postgres # a subfolder in which data will stay -- specifically for postgres database
           env: # overwriting the default password of postgres image
+            # # this env variable should be ditto same like this -- from start to end
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
